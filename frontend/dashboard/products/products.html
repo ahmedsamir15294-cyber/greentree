@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GreenTree | Products</title>
+
+    <link rel="stylesheet" href="../../css/normalize.css">
+    <link rel="stylesheet" href="products.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="dashboard-header">
+
+        <a href="../dashboard.html" class="logo">
+
+            <span class="logo-mark">G</span>
+
+            <span class="logo-text">
+                Green<span>Tree</span>
+            </span>
+
+        </a>
+
+        <a href="../dashboard.html" class="back-dashboard">
+            Back to Dashboard
+        </a>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="products-page">
+
+        <div class="page-header">
+
+            <div>
+
+                <span class="section-label">
+                    MANAGEMENT
+                </span>
+
+                <h1>Products</h1>
+
+                <p>
+                    Manage products available on your platform.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= PRODUCTS TABLE ================= -->
+
+        <section class="products-section">
+
+            <div class="products-table-wrapper">
+
+                <table class="products-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Product</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="productsList">
+
+                        <!-- Products will be loaded from Go -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= PRODUCT MODAL ================= -->
+
+    <div id="productModal" class="modal">
+
+        <div class="modal-content">
+
+            <button
+                class="modal-close"
+                onclick="closeProductModal()"
+            >
+                ×
+            </button>
+
+
+            <span class="section-label">
+                PRODUCT DETAILS
+            </span>
+
+
+            <h2 id="modalProductName">
+                Product
+            </h2>
+
+
+            <div class="product-details">
+
+                <div class="detail-card">
+
+                    <span>ID</span>
+
+                    <strong id="modalProductId">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-card">
+
+                    <span>CATEGORY</span>
+
+                    <strong id="modalProductCategory">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-card">
+
+                    <span>PRICE</span>
+
+                    <strong id="modalProductPrice">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-card">
+
+                    <span>STOCK</span>
+
+                    <strong id="modalProductStock">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="detail-card">
+
+                    <span>STATUS</span>
+
+                    <strong id="modalProductStatus">
+                        -
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    class="close-button"
+                    onclick="closeProductModal()"
+                >
+                    Close
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="products.js"></script>
+
+</body>
+
+</html>

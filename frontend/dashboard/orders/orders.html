@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>GreenTree | Orders</title>
+
+    <link
+        rel="stylesheet"
+        href="../../css/normalize.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="orders.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="dashboard-header">
+
+
+        <a
+            href="../dashboard.html"
+            class="logo"
+        >
+
+            <span class="logo-mark">
+                G
+            </span>
+
+
+            <span class="logo-text">
+                Green<span>Tree</span>
+            </span>
+
+        </a>
+
+
+        <a
+            href="../dashboard.html"
+            class="back-dashboard"
+        >
+            Back to Dashboard
+        </a>
+
+
+    </header>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="orders-page">
+
+
+        <!-- ================= PAGE HEADER ================= -->
+
+        <div class="page-header">
+
+            <span class="section-label">
+                MANAGEMENT
+            </span>
+
+
+            <h1>
+                Orders
+            </h1>
+
+
+            <p>
+                Manage orders received through your platform.
+            </p>
+
+        </div>
+
+
+
+        <!-- ================= ORDERS ================= -->
+
+        <section class="orders-section">
+
+
+            <div class="orders-table-wrapper">
+
+
+                <table class="orders-table">
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Order
+                            </th>
+
+                            <th>
+                                Customer
+                            </th>
+
+                            <th>
+                                Product
+                            </th>
+
+                            <th>
+                                Amount
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+
+                    <tbody id="ordersList">
+
+                        <!--
+                            Orders will be loaded
+                            from Go backend
+                        -->
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================= ORDER MODAL ================= -->
+
+    <div
+        id="orderModal"
+        class="order-modal"
+    >
+
+
+        <div class="order-modal-content">
+
+
+            <button
+                class="modal-close"
+                onclick="closeOrderModal()"
+            >
+                ×
+            </button>
+
+
+
+            <span class="section-label">
+                ORDER DETAILS
+            </span>
+
+
+            <h2 id="modalOrderTitle">
+                Order
+            </h2>
+
+
+
+            <div class="order-details">
+
+
+                <div class="detail-card">
+
+                    <span>
+                        ORDER ID
+                    </span>
+
+                    <strong id="modalOrderId">
+                        -
+                    </strong>
+
+                </div>
+
+
+
+                <div class="detail-card">
+
+                    <span>
+                        CUSTOMER
+                    </span>
+
+                    <strong id="modalCustomer">
+                        -
+                    </strong>
+
+                </div>
+
+
+
+                <div class="detail-card">
+
+                    <span>
+                        PRODUCT
+                    </span>
+
+                    <strong id="modalProduct">
+                        -
+                    </strong>
+
+                </div>
+
+
+
+                <div class="detail-card">
+
+                    <span>
+                        AMOUNT
+                    </span>
+
+                    <strong id="modalAmount">
+                        -
+                    </strong>
+
+                </div>
+
+
+
+                <div class="detail-card">
+
+                    <span>
+                        STATUS
+                    </span>
+
+                    <strong id="modalStatus">
+                        -
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="modal-footer">
+
+                <button
+                    class="close-button"
+                    onclick="closeOrderModal()"
+                >
+                    Close
+                </button>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <script src="orders.js"></script>
+
+</body>
+
+</html>

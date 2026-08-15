@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GreenTree - Profile</title>
+
+  <link rel="stylesheet" href="../css/normalize.css">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+                <span class="logo-icon">🌿</span>
+                <span>GreenTree</span>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="#" class="nav-item active">
+                    <span>♙</span>
+                    <span>Profile</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>⌁</span>
+                    <span>Analytics</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>♧</span>
+                    <span>Orders</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>▱</span>
+                    <span>Messages</span>
+
+                    <span class="message-count">3</span>
+                </a>
+
+                <div class="nav-line"></div>
+
+                <a href="#" class="nav-item">
+                    <span>⚙</span>
+                    <span>Settings</span>
+                </a>
+
+                <a href="#" class="nav-item">
+                    <span>▭</span>
+                    <span>Billing</span>
+                </a>
+
+            </nav>
+
+            <div class="sidebar-bottom">
+
+                <button id="logoutBtn" class="logout-btn">
+                    <span>⇥</span>
+                    Logout
+                </button>
+
+                <div class="support">
+                    <div class="support-icon">◉</div>
+
+                    <div>
+                        <p>Need help?</p>
+                        <span>Contact support</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= MAIN ================= -->
+
+        <main class="main">
+
+            <!-- TOP BAR -->
+
+            <header class="topbar">
+
+                <button class="menu-btn">
+                    ☰
+                </button>
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="text"
+                        placeholder="Search anything..."
+                    >
+
+                    <span class="shortcut">
+                        Ctrl + K
+                    </span>
+
+                </div>
+
+                <div class="top-actions">
+
+                    <button class="top-btn notification">
+                        ♧
+                        <span>3</span>
+                    </button>
+
+                    <button class="top-btn">
+                        ◐
+                    </button>
+
+                    <div class="top-user">
+
+                        <div class="small-avatar">
+                            <span id="topAvatar">B</span>
+                        </div>
+
+                        <div>
+                            <strong id="topName">balaboza</strong>
+                            <small id="topUsername">@ahmed</small>
+                        </div>
+
+                        <span>⌄</span>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+            <!-- PAGE -->
+
+            <div class="page">
+
+                <!-- PAGE HEADER -->
+
+                <div class="page-header">
+
+                    <div>
+                        <h1>Profile</h1>
+
+                        <p>
+                            Manage your personal information and account settings.
+                        </p>
+                    </div>
+
+                    <button id="editBtn" class="edit-btn">
+                        ✎ &nbsp; Edit Profile
+                    </button>
+
+                </div>
+
+
+                <!-- ================= PROFILE SUMMARY ================= -->
+
+                <section class="profile-summary">
+
+                    <div class="profile-left">
+
+                        <div class="big-avatar">
+
+                            <span id="avatarLetter">B</span>
+
+                            <span class="online-dot"></span>
+
+                        </div>
+
+                        <div class="profile-title">
+
+                            <h2 id="userName">
+                                balaboza
+                            </h2>
+
+                            <p id="userUsername">
+                                @ahmed
+                            </p>
+
+                            <span class="role-badge">
+                                ♢ &nbsp; User
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="profile-status">
+
+                        <div class="status-item">
+
+                            <div class="status-icon purple">
+                                ▣
+                            </div>
+
+                            <div>
+                                <span>Account Created</span>
+                                <strong id="createdAt">
+                                    August 12, 2026
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="status-divider"></div>
+
+
+                        <div class="status-item">
+
+                            <div class="status-icon green">
+                                ✉
+                            </div>
+
+                            <div>
+                                <span>Email Verified</span>
+
+                                <strong class="verified">
+                                    Verified ✓
+                                </strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ================= CONTENT GRID ================= -->
+
+                <div class="content-grid">
+
+
+                    <!-- PERSONAL INFORMATION -->
+
+                    <section class="card personal-card">
+
+                        <div class="card-header">
+
+                            <div class="card-title-icon green-bg">
+                                ♙
+                            </div>
+
+                            <div>
+                                <h2>Personal Information</h2>
+                                <p>Your basic account details</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="info-grid">
+
+
+                            <div class="info-box">
+
+                                <div class="info-icon green-bg">
+                                    ♙
+                                </div>
+
+                                <div>
+                                    <span>Full Name</span>
+                                    <strong id="fullName">
+                                        balaboza
+                                    </strong>
+                                </div>
+
+                            </div>
+
+
+                            <div class="info-box">
+
+                                <div class="info-icon purple-bg">
+                                    @
+                                </div>
+
+                                <div>
+                                    <span>Username</span>
+                                    <strong id="username">
+                                        ahmed
+                                    </strong>
+                                </div>
+
+                            </div>
+
+
+                            <div class="info-box">
+
+                                <div class="info-icon green-bg">
+                                    ✉
+                                </div>
+
+                                <div>
+                                    <span>Email</span>
+                                    <strong id="email">
+                                        ahmedsamir15294@gmail.com
+                                    </strong>
+                                </div>
+
+                            </div>
+
+
+                            <div class="info-box">
+
+                                <div class="info-icon orange-bg">
+                                    ☎
+                                </div>
+
+                                <div>
+                                    <span>Phone</span>
+                                    <strong id="phone">
+                                        01095175213
+                                    </strong>
+                                </div>
+
+                            </div>
+
+
+                            <div class="info-box">
+
+                                <div class="info-icon purple-bg">
+                                    ♢
+                                </div>
+
+                                <div>
+                                    <span>Role</span>
+                                    <strong id="role">
+                                        User
+                                    </strong>
+                                </div>
+
+                            </div>
+
+
+                            <div class="info-box">
+
+                                <div class="info-icon blue-bg">
+                                    ◎
+                                </div>
+
+                                <div>
+                                    <span>Language</span>
+                                    <strong>
+                                        English (US)
+                                    </strong>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ================= SECURITY ================= -->
+
+                    <section class="card security-card">
+
+                        <div class="card-header">
+
+                            <div class="card-title-icon green-bg">
+                                ♢
+                            </div>
+
+                            <div>
+                                <h2>Security</h2>
+                                <p>Keep your account secure</p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="security-list">
+
+
+                            <div class="security-item">
+
+                                <div class="security-icon green-bg">
+                                    🔒
+                                </div>
+
+                                <div class="security-info">
+                                    <span>Password</span>
+                                    <strong>••••••••</strong>
+                                </div>
+
+                                <button class="small-btn">
+                                    Change
+                                </button>
+
+                            </div>
+
+
+                            <div class="security-item">
+
+                                <div class="security-icon green-bg">
+                                    ♢
+                                </div>
+
+                                <div class="security-info">
+                                    <span>Two-Factor Auth</span>
+                                    <strong>Disabled</strong>
+                                </div>
+
+                                <button class="small-btn">
+                                    Enable
+                                </button>
+
+                            </div>
+
+
+                            <div class="security-item">
+
+                                <div class="security-icon green-bg">
+                                    ▣
+                                </div>
+
+                                <div class="security-info">
+                                    <span>Active Sessions</span>
+                                    <strong>1 active session</strong>
+                                </div>
+
+                                <button class="small-btn">
+                                    Manage
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+
+                <!-- ================= RECENT ACTIVITY ================= -->
+
+                <section class="card activity-card">
+
+                    <div class="card-header activity-header">
+
+                        <div class="card-title-wrapper">
+
+                            <div class="card-title-icon blue-bg">
+                                ◷
+                            </div>
+
+                            <div>
+                                <h2>Recent Activity</h2>
+                                <p>Your latest account activity</p>
+                            </div>
+
+                        </div>
+
+                        <button class="small-btn">
+                            View All
+                        </button>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-dot"></div>
+
+                        <div class="activity-info">
+
+                            <strong>Login</strong>
+
+                            <span>
+                                Successfully logged in
+                            </span>
+
+                        </div>
+
+                        <div class="activity-time">
+
+                            <strong>
+                                Today, 10:30 AM
+                            </strong>
+
+                            <span>
+                                Cairo, Egypt
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= EDIT MODAL ================= -->
+
+    <div id="editModal" class="modal hidden">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <div>
+                    <h2>Edit Profile</h2>
+                    <p>Update your personal information.</p>
+                </div>
+
+                <button id="closeModal" class="close-btn">
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Full Name</label>
+
+                <input
+                    type="text"
+                    id="editName"
+                    placeholder="Full Name"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="editEmail"
+                    placeholder="Email"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Phone</label>
+
+                <input
+                    type="text"
+                    id="editPhone"
+                    placeholder="Phone"
+                >
+
+            </div>
+
+
+            <div class="modal-actions">
+
+                <button id="cancelBtn" class="cancel-btn">
+                    Cancel
+                </button>
+
+                <button id="saveBtn" class="save-btn">
+                    Save Changes
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+  <script src="profile.js"></script>
+
+</body>
+
+</html>

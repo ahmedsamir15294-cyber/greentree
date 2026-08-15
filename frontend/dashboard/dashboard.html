@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>GreenTree | Admin Dashboard</title>
+
+    <link rel="stylesheet"
+          href="../css/normalize.css">
+
+    <link rel="stylesheet"
+          href="../css/dashboard.css">
+
+</head>
+
+
+<body>
+
+<div class="dashboard-layout">
+
+
+    <!-- ==================================================
+         SIDEBAR
+    ================================================== -->
+
+    <aside class="sidebar">
+
+        <a href="dashboard.html" class="sidebar-logo">
+
+            <span class="logo-mark">
+                G
+            </span>
+
+            <span class="logo-text">
+                Green<span>Tree</span>
+            </span>
+
+        </a>
+
+
+        <nav class="sidebar-nav">
+
+
+            <!-- MAIN -->
+
+            <div class="sidebar-title">
+                MAIN
+            </div>
+
+
+            <a href="dashboard.html"
+               class="sidebar-link active">
+
+                <span class="sidebar-icon">
+                    D
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a href="profile.html"
+               class="sidebar-link">
+
+                <span class="sidebar-icon">
+                    P
+                </span>
+
+                <span>
+                    Profile
+                </span>
+
+            </a>
+
+
+            <!-- MANAGEMENT -->
+
+            <div class="sidebar-title">
+                MANAGEMENT
+            </div>
+
+
+            <a href="users/users.html"
+               class="sidebar-link">
+
+                <span class="sidebar-icon">
+                    U
+                </span>
+
+                <span>
+                    Users
+                </span>
+
+            </a>
+
+
+            <a href="orders/orders.html"
+               class="sidebar-link">
+
+                <span class="sidebar-icon">
+                    O
+                </span>
+
+                <span>
+                    Orders
+                </span>
+
+            </a>
+
+
+            <a href="products/products.html"
+               class="sidebar-link">
+
+                <span class="sidebar-icon">
+                    P
+                </span>
+
+                <span>
+                    Products
+                </span>
+
+            </a>
+
+
+            <!-- SYSTEM -->
+
+            <div class="sidebar-title">
+                SYSTEM
+            </div>
+
+
+            <a href="settings/settings.html"
+               class="sidebar-link">
+
+                <span class="sidebar-icon">
+                    S
+                </span>
+
+                <span>
+                    Settings
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="sidebar-bottom">
+
+            <a href="../../index.html"
+               class="sidebar-link website-link">
+
+                <span class="sidebar-icon">
+                    ↗
+                </span>
+
+                <span>
+                    View Website
+                </span>
+
+            </a>
+
+
+            <button
+                type="button"
+                class="sidebar-link logout-btn"
+                onclick="logout()">
+
+                <span class="sidebar-icon">
+                    ↪
+                </span>
+
+                <span>
+                    Logout
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- SIDEBAR OVERLAY -->
+
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay">
+    </div>
+
+
+
+    <!-- ==================================================
+         MAIN
+    ================================================== -->
+
+    <main class="dashboard-main">
+
+
+        <!-- TOPBAR -->
+
+        <header class="dashboard-topbar">
+
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="menu-btn"
+                    id="menuBtn">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </button>
+
+
+                <div>
+
+                    <span class="topbar-label">
+                        ADMIN PANEL
+                    </span>
+
+                    <h1>
+                        Dashboard
+                    </h1>
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="../../index.html"
+                class="back-home">
+
+                Back to Website
+
+            </a>
+
+        </header>
+
+
+
+        <!-- ==================================================
+             DASHBOARD CONTENT
+        ================================================== -->
+
+        <section class="dashboard">
+
+
+            <!-- INTRO -->
+
+            <div class="dashboard-intro">
+
+                <h2 id="welcomeMessage">
+                    Welcome back, Ahmed.
+                </h2>
+
+                <p>
+                    Here's what's happening with your platform today.
+                </p>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 STATISTICS
+            ================================================== -->
+
+            <div class="stats-grid">
+
+
+                <!-- USERS -->
+
+                <div class="stat-card">
+
+                    <span class="stat-label">
+                        TOTAL USERS
+                    </span>
+
+                    <strong id="totalUsers">
+                        0
+                    </strong>
+
+                    <span class="stat-description">
+                        Registered users
+                    </span>
+
+                </div>
+
+
+
+                <!-- ORDERS -->
+
+                <div class="stat-card">
+
+                    <span class="stat-label">
+                        TOTAL ORDERS
+                    </span>
+
+                    <strong id="totalOrders">
+                        0
+                    </strong>
+
+                    <span class="stat-description">
+                        Orders received
+                    </span>
+
+                </div>
+
+
+
+                <!-- REVENUE -->
+
+                <div class="stat-card">
+
+                    <span class="stat-label">
+                        TOTAL REVENUE
+                    </span>
+
+                    <strong id="totalRevenue">
+                        $0.00
+                    </strong>
+
+                    <span class="stat-description">
+                        Total revenue
+                    </span>
+
+                </div>
+
+
+
+                <!-- GROWTH -->
+
+                <div class="stat-card">
+
+                    <span class="stat-label">
+                        GROWTH
+                    </span>
+
+                    <strong id="growth">
+                        +12.5%
+                    </strong>
+
+                    <span class="stat-description">
+                        Compared to previous period
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================================
+                 RECENT ACTIVITY
+            ================================================== -->
+
+            <section class="dashboard-section">
+
+
+                <div class="section-heading">
+
+                    <span class="section-label">
+                        ACTIVITY
+                    </span>
+
+                    <h2>
+                        Recent Activity
+                    </h2>
+
+                    <p>
+                        Latest activity happening on your platform.
+                    </p>
+
+                </div>
+
+
+
+                <div class="activity-list"
+                     id="activityList">
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            U
+                        </div>
+
+                        <div class="activity-content">
+
+                            <p class="activity-message">
+                                New user registered
+                            </p>
+
+                            <p class="activity-time">
+                                Recently
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            O
+                        </div>
+
+                        <div class="activity-content">
+
+                            <p class="activity-message">
+                                New order received
+                            </p>
+
+                            <p class="activity-time">
+                                Recently
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon">
+                            P
+                        </div>
+
+                        <div class="activity-content">
+
+                            <p class="activity-message">
+                                Product updated
+                            </p>
+
+                            <p class="activity-time">
+                                Recently
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+        </section>
+
+    </main>
+
+</div>
+
+
+
+<!-- JAVASCRIPT -->
+
+<script src="dashboard.js"></script>
+
+</body>
+
+</html>
