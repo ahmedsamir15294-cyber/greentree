@@ -1,9 +1,13 @@
 /* ==================================================
-   DASHBOARD
+   GREENTREE ADMIN DASHBOARD
 ================================================== */
 
+const DASHBOARD_API = "http://localhost:8080/api/dashboard";
 
-/* ================= LOAD DASHBOARD ================= */
+
+/* ==================================================
+   LOAD DASHBOARD
+================================================== */
 
 async function loadDashboard() {
 
@@ -16,138 +20,60 @@ async function loadDashboard() {
     const totalRevenue =
         document.getElementById("totalRevenue");
 
+    const growth =
+        document.getElementById("growth");
+
 
     try {
 
-
-        /* ================= USERS ================= */
-
-        const usersResponse =
-            await fetch(
-                "http://localhost:8080/api/users"
-            );
-
-
-        if (!usersResponse.ok) {
-
-            throw new Error(
-                "Users API Error: " +
-                usersResponse.status
-            );
-
-        }
-
-
-        const users =
-            await usersResponse.json();
-
-
-        console.log(
-            "Users from Go:",
-            users
-        );
-
-
-
-        /* ================= ORDERS ================= */
-
-        const ordersResponse =
-            await fetch(
-                "http://localhost:8080/api/orders"
-            );
-
-
-        if (!ordersResponse.ok) {
-
-            throw new Error(
-                "Orders API Error: " +
-                ordersResponse.status
-            );
-
-        }
-
-
-        const orders =
-            await ordersResponse.json();
-
-
-        console.log(
-            "Orders from Go:",
-            orders
-        );
-
-
-
-        /* ================= TOTAL USERS ================= */
-
-        totalUsers.textContent =
-            users.length.toLocaleString("en-US");
-
-
-
-        /* ================= TOTAL ORDERS ================= */
-
-        totalOrders.textContent =
-            orders.length.toLocaleString("en-US");
-
-
-
-        /* ================= REVENUE ================= */
-
-        let revenue = 0;
-
-
-        orders.forEach(order => {
-
-            if (
-                order.status === "Completed"
-            ) {
-
-                revenue +=
-                    Number(order.amount) || 0;
-
-            }
-
-        });
-
-
-        totalRevenue.textContent =
-            "$" +
-            revenue.toLocaleString(
-                "en-US",
-                {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
+        const response =
+            await fetch(DASHBOARD_API, {
+                method: "GET",
+                headers: {
+                    "Accept": "application/json"
                 }
+            });
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                `Dashboard API Error: ${response.status}`
             );
-
-
-
-        /* ================= GROWTH ================= */
-
-        const growth =
-            document.getElementById("growth");
-
-
-        if (growth) {
-
-            growth.textContent =
-                "+12.5%";
 
         }
 
+
+        const dashboard =
+            await response.json();
+
+
+        console.log(
+            "Dashboard data:",
+            dashboard
+        );
+
+
+        /* ================= STATISTICS ================= */
+
+        updateStatistics(dashboard);
 
 
         /* ================= ACTIVITY ================= */
 
         loadActivity(
-            users,
-            orders
+            dashboard.recentActivity
+        );
+
+
+        /* ================= RECENT ORDERS ================= */
+
+        loadRecentOrders(
+            dashboard.recentOrders
         );
 
 
     } catch (error) {
-
 
         console.error(
             "Failed to load dashboard:",
@@ -155,26 +81,86 @@ async function loadDashboard() {
         );
 
 
-        totalUsers.textContent =
-            "--";
+        showDashboardError();
 
+    }
+
+}
+
+
+/* ==================================================
+   STATISTICS
+================================================== */
+
+function updateStatistics(dashboard) {
+
+    const totalUsers =
+        document.getElementById("totalUsers");
+
+    const totalOrders =
+        document.getElementById("totalOrders");
+
+    const totalRevenue =
+        document.getElementById("totalRevenue");
+
+    const growth =
+        document.getElementById("growth");
+
+
+    /* ================= USERS ================= */
+
+    if (totalUsers) {
+
+        totalUsers.textContent =
+            formatNumber(
+                dashboard.totalUsers
+            );
+
+    }
+
+
+    /* ================= ORDERS ================= */
+
+    if (totalOrders) {
 
         totalOrders.textContent =
-            "--";
+            formatNumber(
+                dashboard.totalOrders
+            );
 
+    }
+
+
+    /* ================= REVENUE ================= */
+
+    if (totalRevenue) {
 
         totalRevenue.textContent =
-            "$--";
+            formatCurrency(
+                dashboard.totalRevenue
+            );
+
+    }
 
 
-        const growth =
-            document.getElementById("growth");
+    /* ================= GROWTH ================= */
+
+    if (growth) {
+
+        const growthValue =
+            Number(
+                dashboard.growth
+            );
 
 
-        if (growth) {
+        if (Number.isFinite(growthValue)) {
 
             growth.textContent =
-                "--";
+                `${growthValue >= 0 ? "+" : ""}${growthValue}%`;
+
+        } else {
+
+            growth.textContent = "--";
 
         }
 
@@ -183,15 +169,64 @@ async function loadDashboard() {
 }
 
 
+/* ==================================================
+   FORMAT NUMBER
+================================================== */
+
+function formatNumber(value) {
+
+    const number =
+        Number(value);
+
+
+    if (!Number.isFinite(number)) {
+
+        return "--";
+
+    }
+
+
+    return number.toLocaleString(
+        "en-US"
+    );
+
+}
+
+
+/* ==================================================
+   FORMAT CURRENCY
+================================================== */
+
+function formatCurrency(value) {
+
+    const number =
+        Number(value);
+
+
+    if (!Number.isFinite(number)) {
+
+        return "$--";
+
+    }
+
+
+    return "$" +
+        number.toLocaleString(
+            "en-US",
+            {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }
+        );
+
+}
+
 
 /* ==================================================
    ACTIVITY
 ================================================== */
 
-function loadActivity(
-    users,
-    orders
-) {
+function loadActivity(activities) {
 
     const activityList =
         document.getElementById(
@@ -200,112 +235,24 @@ function loadActivity(
 
 
     if (!activityList) {
+
+        console.warn(
+            "activityList element not found."
+        );
+
         return;
+
     }
 
 
     activityList.innerHTML = "";
 
 
-
-    /* ================= USER ACTIVITY ================= */
-
-    if (
-        users &&
-        users.length > 0
-    ) {
-
-        const user =
-            users[users.length - 1];
-
-
-        const item =
-            document.createElement("div");
-
-
-        item.className =
-            "activity-item";
-
-
-        item.innerHTML = `
-
-            <div class="activity-icon">
-                U
-            </div>
-
-            <div class="activity-content">
-
-                <p class="activity-message">
-                    User registered:
-                    ${user.name || "New User"}
-                </p>
-
-                <p class="activity-time">
-                    Recently
-                </p>
-
-            </div>
-
-        `;
-
-
-        activityList.appendChild(item);
-
-    }
-
-
-
-    /* ================= ORDER ACTIVITY ================= */
+    /* ================= EMPTY ================= */
 
     if (
-        orders &&
-        orders.length > 0
-    ) {
-
-        const order =
-            orders[0];
-
-
-        const item =
-            document.createElement("div");
-
-
-        item.className =
-            "activity-item";
-
-
-        item.innerHTML = `
-
-            <div class="activity-icon">
-                O
-            </div>
-
-            <div class="activity-content">
-
-                <p class="activity-message">
-                    New order #${order.id}
-                    from ${order.customer}
-                </p>
-
-                <p class="activity-time">
-                    ${order.status}
-                </p>
-
-            </div>
-
-        `;
-
-
-        activityList.appendChild(item);
-
-    }
-
-
-
-    /* ================= DEFAULT ACTIVITY ================= */
-
-    if (
-        activityList.children.length === 0
+        !Array.isArray(activities) ||
+        activities.length === 0
     ) {
 
         activityList.innerHTML = `
@@ -332,36 +279,344 @@ function loadActivity(
 
         `;
 
+        return;
+
+    }
+
+
+    /* ================= ACTIVITIES ================= */
+
+    activities.forEach(
+        function (activity) {
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+
+            item.className =
+                "activity-item";
+
+
+            const icon =
+                getActivityIcon(
+                    activity.type
+                );
+
+
+            const message =
+                escapeHTML(
+                    activity.message ||
+                    "Activity"
+                );
+
+
+            const time =
+                escapeHTML(
+                    activity.time ||
+                    "Recently"
+                );
+
+
+            item.innerHTML = `
+
+                <div class="activity-icon">
+                    ${icon}
+                </div>
+
+                <div class="activity-content">
+
+                    <p class="activity-message">
+                        ${message}
+                    </p>
+
+                    <p class="activity-time">
+                        ${time}
+                    </p>
+
+                </div>
+
+            `;
+
+
+            activityList.appendChild(
+                item
+            );
+
+        }
+    );
+
+}
+
+
+/* ==================================================
+   ACTIVITY ICON
+================================================== */
+
+function getActivityIcon(type) {
+
+    switch (
+        String(type).toLowerCase()
+    ) {
+
+        case "user":
+            return "U";
+
+        case "order":
+            return "O";
+
+        case "payment":
+            return "$";
+
+        case "profile":
+            return "P";
+
+        default:
+            return "G";
+
     }
 
 }
 
+
+/* ==================================================
+   RECENT ORDERS
+================================================== */
+
+function loadRecentOrders(orders) {
+
+    const ordersTableBody =
+        document.getElementById(
+            "ordersTableBody"
+        );
+
+
+    if (!ordersTableBody) {
+
+        console.warn(
+            "ordersTableBody element not found."
+        );
+
+        return;
+
+    }
+
+
+    ordersTableBody.innerHTML = "";
+
+
+    /* ================= EMPTY ================= */
+
+    if (
+        !Array.isArray(orders) ||
+        orders.length === 0
+    ) {
+
+        ordersTableBody.innerHTML = `
+
+            <tr>
+
+                <td colspan="5">
+                    No recent orders.
+                </td>
+
+            </tr>
+
+        `;
+
+        return;
+
+    }
+
+
+    /* ================= ORDERS ================= */
+
+    orders.forEach(
+        function (order) {
+
+            const row =
+                document.createElement(
+                    "tr"
+                );
+
+
+            const status =
+                order.status ||
+                "Unknown";
+
+
+            const statusClass =
+                getOrderStatusClass(
+                    status
+                );
+
+
+            const orderId =
+                escapeHTML(
+                    String(
+                        order.id ?? ""
+                    )
+                );
+
+
+            const customer =
+                escapeHTML(
+                    order.customer ||
+                    "Unknown"
+                );
+
+
+            const product =
+                escapeHTML(
+                    order.product ||
+                    "Unknown"
+                );
+
+
+            const amount =
+                formatCurrency(
+                    order.amount
+                );
+
+
+            row.innerHTML = `
+
+                <td class="order-id">
+                    #${orderId}
+                </td>
+
+                <td class="customer-name">
+                    ${customer}
+                </td>
+
+                <td>
+                    ${product}
+                </td>
+
+                <td class="order-amount">
+                    ${amount}
+                </td>
+
+                <td>
+
+                    <span
+                        class="order-status ${statusClass}"
+                    >
+                        ${escapeHTML(status)}
+                    </span>
+
+                </td>
+
+            `;
+
+
+            ordersTableBody.appendChild(
+                row
+            );
+
+        }
+    );
+
+}
+
+
+/* ==================================================
+   ORDER STATUS
+================================================== */
+
+function getOrderStatusClass(status) {
+
+    switch (
+        String(status).toLowerCase()
+    ) {
+
+        case "completed":
+            return "status-completed";
+
+        case "pending":
+            return "status-pending";
+
+        case "cancelled":
+            return "status-cancelled";
+
+        default:
+            return "";
+
+    }
+
+}
+
+
+/* ==================================================
+   HTML ESCAPE
+================================================== */
+
+function escapeHTML(value) {
+
+    return String(value)
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
 
 
 /* ==================================================
    MOBILE MENU
 ================================================== */
 
-const menuBtn =
-    document.getElementById(
-        "menuBtn"
-    );
+function setupMobileMenu() {
+
+    const menuBtn =
+        document.getElementById(
+            "menuBtn"
+        );
 
 
-const sidebar =
-    document.querySelector(
-        ".sidebar"
-    );
+    const sidebar =
+        document.querySelector(
+            ".sidebar"
+        );
 
 
-const sidebarOverlay =
-    document.getElementById(
-        "sidebarOverlay"
-    );
+    const sidebarOverlay =
+        document.getElementById(
+            "sidebarOverlay"
+        );
 
 
+    if (
+        !menuBtn ||
+        !sidebar
+    ) {
 
-if (menuBtn) {
+        return;
+
+    }
+
 
     menuBtn.addEventListener(
         "click",
@@ -371,36 +626,40 @@ if (menuBtn) {
                 "open"
             );
 
-            sidebarOverlay.classList.toggle(
-                "show"
-            );
+
+            if (sidebarOverlay) {
+
+                sidebarOverlay.classList.toggle(
+                    "show"
+                );
+
+            }
 
         }
     );
 
+
+    if (sidebarOverlay) {
+
+        sidebarOverlay.addEventListener(
+            "click",
+            function () {
+
+                sidebar.classList.remove(
+                    "open"
+                );
+
+
+                sidebarOverlay.classList.remove(
+                    "show"
+                );
+
+            }
+        );
+
+    }
+
 }
-
-
-
-if (sidebarOverlay) {
-
-    sidebarOverlay.addEventListener(
-        "click",
-        function () {
-
-            sidebar.classList.remove(
-                "open"
-            );
-
-            sidebarOverlay.classList.remove(
-                "show"
-            );
-
-        }
-    );
-
-}
-
 
 
 /* ==================================================
@@ -410,13 +669,15 @@ if (sidebarOverlay) {
 function logout() {
 
     const confirmLogout =
-        confirm(
+        window.confirm(
             "Are you sure you want to logout?"
         );
 
 
     if (!confirmLogout) {
+
         return;
+
     }
 
 
@@ -426,9 +687,116 @@ function logout() {
 }
 
 
+/* ==================================================
+   ERROR STATE
+================================================== */
+
+function showDashboardError() {
+
+    const totalUsers =
+        document.getElementById(
+            "totalUsers"
+        );
+
+
+    const totalOrders =
+        document.getElementById(
+            "totalOrders"
+        );
+
+
+    const totalRevenue =
+        document.getElementById(
+            "totalRevenue"
+        );
+
+
+    const growth =
+        document.getElementById(
+            "growth"
+        );
+
+
+    const activityList =
+        document.getElementById(
+            "activityList"
+        );
+
+
+    if (totalUsers) {
+
+        totalUsers.textContent =
+            "--";
+
+    }
+
+
+    if (totalOrders) {
+
+        totalOrders.textContent =
+            "--";
+
+    }
+
+
+    if (totalRevenue) {
+
+        totalRevenue.textContent =
+            "$--";
+
+    }
+
+
+    if (growth) {
+
+        growth.textContent =
+            "--";
+
+    }
+
+
+    if (activityList) {
+
+        activityList.innerHTML = `
+
+            <div class="activity-item">
+
+                <div class="activity-icon">
+                    !
+                </div>
+
+                <div class="activity-content">
+
+                    <p class="activity-message">
+                        Unable to load dashboard data
+                    </p>
+
+                    <p class="activity-time">
+                        Please check the backend server.
+                    </p>
+
+                </div>
+
+            </div>
+
+        `;
+
+    }
+
+}
+
 
 /* ==================================================
    START DASHBOARD
 ================================================== */
 
-loadDashboard();
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        setupMobileMenu();
+
+        loadDashboard();
+
+    }
+);

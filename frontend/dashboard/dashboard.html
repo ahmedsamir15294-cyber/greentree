@@ -218,7 +218,8 @@
                 <button
                     type="button"
                     class="menu-btn"
-                    id="menuBtn">
+                    id="menuBtn"
+                    aria-label="Open menu">
 
                     <span></span>
                     <span></span>
@@ -292,8 +293,8 @@
                         TOTAL USERS
                     </span>
 
-                    <strong id="totalUsers">
-                        0
+                    <strong id="totalUsers" aria-live="polite">
+                        --
                     </strong>
 
                     <span class="stat-description">
@@ -312,8 +313,8 @@
                         TOTAL ORDERS
                     </span>
 
-                    <strong id="totalOrders">
-                        0
+                    <strong id="totalOrders" aria-live="polite">
+                        --
                     </strong>
 
                     <span class="stat-description">
@@ -332,8 +333,8 @@
                         TOTAL REVENUE
                     </span>
 
-                    <strong id="totalRevenue">
-                        $0.00
+                    <strong id="totalRevenue" aria-live="polite">
+                        $--
                     </strong>
 
                     <span class="stat-description">
@@ -352,8 +353,8 @@
                         GROWTH
                     </span>
 
-                    <strong id="growth">
-                        +12.5%
+                    <strong id="growth" aria-live="polite">
+                        --
                     </strong>
 
                     <span class="stat-description">
@@ -397,18 +398,14 @@
 
                     <div class="activity-item">
 
-                        <div class="activity-icon">
-                            U
-                        </div>
-
                         <div class="activity-content">
 
                             <p class="activity-message">
-                                New user registered
+                                Loading activity...
                             </p>
 
                             <p class="activity-time">
-                                Recently
+                                Please wait
                             </p>
 
                         </div>
@@ -416,47 +413,84 @@
                     </div>
 
 
-                    <div class="activity-item">
-
-                        <div class="activity-icon">
-                            O
-                        </div>
-
-                        <div class="activity-content">
-
-                            <p class="activity-message">
-                                New order received
-                            </p>
-
-                            <p class="activity-time">
-                                Recently
-                            </p>
-
-                        </div>
-
                     </div>
 
 
-                    <div class="activity-item">
+                </div>
 
-                        <div class="activity-icon">
-                            P
-                        </div>
+            </section>
 
-                        <div class="activity-content">
 
-                            <p class="activity-message">
-                                Product updated
-                            </p>
 
-                            <p class="activity-time">
-                                Recently
-                            </p>
+            <!-- ==================================================
+                 RECENT ORDERS
+            ================================================== -->
 
-                        </div>
+            <section class="dashboard-section orders-section">
 
-                    </div>
+                <div class="section-heading">
 
+                    <span class="section-label">
+                        ORDERS
+                    </span>
+
+                    <h2>
+                        Recent Orders
+                    </h2>
+
+                    <p>
+                        Latest orders received on your platform.
+                    </p>
+
+                </div>
+
+
+                <div class="orders-table-wrapper">
+
+                    <table class="orders-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th scope="col">
+                                    Order
+                                </th>
+
+                                <th>
+                                    Customer
+                                </th>
+
+                                <th>
+                                    Product
+                                </th>
+
+                                <th>
+                                    Amount
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="ordersTableBody">
+
+                            <tr>
+
+                                <td colspan="5">
+                                    Loading orders...
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
 
                 </div>
 

@@ -1,3 +1,4 @@
+
 /* ==================================================
    DASHBOARD
 ================================================== */
@@ -680,6 +681,20 @@ body {
 }
 
 
+/* ================= SIDEBAR HEIGHT SAFETY ================= */
+
+.sidebar {
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.sidebar-nav {
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+
 /* ================= RESPONSIVE ================= */
 
 @media (max-width: 1100px) {
@@ -786,4 +801,1401 @@ body {
 
     }
 
+}
+/* ==================================================
+   RECENT ORDERS TABLE
+   GreenTree Dashboard
+================================================== */
+
+.dashboard-section {
+    width: 100%;
+}
+
+
+/* --------------------------------------------------
+   Orders Table Wrapper
+-------------------------------------------------- */
+
+.orders-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 28px;
+
+    background: #0b1c2d;
+
+    border: 1px solid #1d354b;
+    border-radius: 16px;
+
+    scrollbar-width: thin;
+}
+
+
+/* --------------------------------------------------
+   Table
+-------------------------------------------------- */
+
+.orders-table {
+    width: 100%;
+    min-width: 760px;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    text-align: left;
+}
+
+
+/* --------------------------------------------------
+   Table Header
+-------------------------------------------------- */
+
+.orders-table thead {
+    background: #0d2236;
+}
+
+
+.orders-table thead th {
+    padding: 18px 22px;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    letter-spacing: 0.04em;
+
+    border-bottom: 1px solid #1d354b;
+
+    white-space: nowrap;
+}
+
+
+/* --------------------------------------------------
+   Table Body
+-------------------------------------------------- */
+
+.orders-table tbody tr {
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.orders-table tbody tr:hover {
+    background: #10273b;
+}
+
+
+.orders-table tbody td {
+    padding: 20px 22px;
+
+    color: #9bb5d0;
+
+    font-size: 15px;
+
+    border-bottom: 1px solid #172f45;
+
+    vertical-align: middle;
+}
+
+
+/* Remove border from last row */
+
+.orders-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* --------------------------------------------------
+   Order ID
+-------------------------------------------------- */
+
+.orders-table .order-id {
+    color: #ffffff;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* --------------------------------------------------
+   Customer
+-------------------------------------------------- */
+
+.orders-table .customer-name {
+    color: #ffffff;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* --------------------------------------------------
+   Product
+-------------------------------------------------- */
+
+.orders-table td:nth-child(3) {
+    color: #9bb5d0;
+}
+
+
+/* --------------------------------------------------
+   Amount
+-------------------------------------------------- */
+
+.orders-table .order-amount {
+    color: #ffffff;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* --------------------------------------------------
+   Status
+-------------------------------------------------- */
+
+.order-status {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 92px;
+
+    padding: 7px 12px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    white-space: nowrap;
+}
+
+
+/* --------------------------------------------------
+   Completed
+-------------------------------------------------- */
+
+.order-status.status-completed {
+    color: #12d99b;
+
+    background: rgba(18, 217, 155, 0.10);
+
+    border: 1px solid rgba(18, 217, 155, 0.30);
+}
+
+
+/* --------------------------------------------------
+   Pending
+-------------------------------------------------- */
+
+.order-status.status-pending {
+    color: #f5c451;
+
+    background: rgba(245, 196, 81, 0.10);
+
+    border: 1px solid rgba(245, 196, 81, 0.30);
+}
+
+
+/* --------------------------------------------------
+   Cancelled
+-------------------------------------------------- */
+
+.order-status.status-cancelled {
+    color: #ff6b6b;
+
+    background: rgba(255, 107, 107, 0.10);
+
+    border: 1px solid rgba(255, 107, 107, 0.30);
+}
+
+
+/* --------------------------------------------------
+   Empty Orders State
+-------------------------------------------------- */
+
+.orders-table tbody td[colspan] {
+    padding: 45px 20px;
+
+    color: #8da8c4;
+
+    text-align: center;
+
+    font-size: 15px;
+}
+
+
+/* ==================================================
+   RECENT ACTIVITY IMPROVEMENTS
+================================================== */
+
+.activity-item {
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+
+.activity-item:hover {
+    transform: translateY(-2px);
+
+    border-color: #12d99b;
+
+    background: #0e2437;
+}
+
+
+/* ==================================================
+   STAT CARD HOVER
+================================================== */
+
+.stat-card {
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.stat-card:hover {
+    transform: translateY(-3px);
+
+    border-color: #24445f;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+
+/* ==================================================
+   FINAL LAYOUT SAFETY
+   Prevent fixed sidebar overlap and table overflow
+================================================== */
+
+.dashboard-main,
+.dashboard,
+.dashboard-section,
+.orders-table-wrapper {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.dashboard-main {
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+.dashboard {
+    box-sizing: border-box;
+}
+
+.dashboard-section {
+    box-sizing: border-box;
+}
+
+.orders-table-wrapper {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    box-sizing: border-box;
+    direction: ltr;
+}
+
+.orders-table {
+    display: table;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    min-width: 760px;
+    box-sizing: border-box;
+    direction: ltr;
+}
+
+@media (min-width: 901px) {
+    .dashboard {
+        width: 100%;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .orders-table {
+        min-width: 760px;
+    }
+}
+
+/* ==================================================
+   MOBILE TABLE
+================================================== */
+
+
+@media (max-width: 900px) {
+
+    .orders-table-wrapper {
+        border-radius: 12px;
+    }
+
+
+    .orders-table {
+        min-width: 700px;
+    }
+
+
+    .orders-table thead th {
+        padding: 15px 16px;
+
+        font-size: 12px;
+    }
+
+
+    .orders-table tbody td {
+        padding: 16px;
+
+        font-size: 14px;
+    }
+
+}
+
+
+/* ==================================================
+   SMALL MOBILE
+================================================== */
+
+@media (max-width: 600px) {
+
+    .orders-table-wrapper {
+        margin-top: 20px;
+    }
+
+
+    .orders-table {
+        min-width: 650px;
+    }
+
+
+    .orders-table thead th,
+    .orders-table tbody td {
+        padding: 14px 12px;
+    }
+
+
+    .order-status {
+        min-width: 82px;
+
+        padding: 6px 10px;
+
+        font-size: 11px;
+    }
+
+}
+
+/* ================= FINAL SIDEBAR BOTTOM FIX ================= */
+
+/* Keep the entire sidebar inside the visible viewport. */
+.sidebar {
+    height: 100vh;
+    min-height: 0;
+    max-height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Navigation can scroll, but the bottom actions stay visible. */
+.sidebar-nav {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+/* Keep View Website / Logout inside the viewport. */
+.sidebar-bottom {
+    flex: 0 0 auto;
+    margin-top: 0;
+    padding: 10px 15px;
+    box-sizing: border-box;
+}
+
+/* Make the bottom links compact enough to remain fully visible. */
+.sidebar-bottom a,
+.sidebar-bottom button {
+    min-height: 38px;
+    padding: 8px 12px;
+    box-sizing: border-box;
+}
+
+
+/* ==================================================
+   GREENTREE SIDEBAR — CUSTOM SCROLLBAR DESIGN
+   Keep scrolling, but make it part of the dark UI.
+   ================================================== */
+
+.sidebar {
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+/* Navigation remains scrollable */
+.sidebar-nav {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: #294157 transparent;
+}
+
+/* Chrome / Edge / Chromium */
+.sidebar-nav::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background: #294157;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+    background: #00d89a;
+    background-clip: padding-box;
+}
+
+/* Keep the bottom actions fixed inside the sidebar */
+.sidebar-bottom {
+    flex: 0 0 auto;
+    margin-top: auto;
+    background: #081625;
+    border-top: 1px solid #1c3045;
+    position: relative;
+    z-index: 2;
+}
+
+/* Slightly more breathing room around the scrollbar */
+@media (min-width: 601px) {
+    .sidebar-nav {
+        padding-right: 10px;
+    }
+}
+/* ==================================================
+   FIX: ORDERS TABLE MUST STAY INSIDE MAIN CONTENT
+================================================== */
+
+.dashboard-main {
+    width: calc(100% - 250px);
+    margin-left: 250px;
+    min-width: 0;
+    max-width: calc(100% - 250px);
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.dashboard {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 45px 35px 70px;
+    box-sizing: border-box;
+    min-width: 0;
+}
+
+.dashboard-section {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.orders-table-wrapper {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    box-sizing: border-box;
+}
+
+.orders-table {
+    width: 100%;
+    min-width: 760px;
+    max-width: none;
+    box-sizing: border-box;
+}
+/* ==================================================
+   FINAL SIDEBAR / MAIN / ORDERS FIX
+================================================== */
+
+/* Keep the fixed sidebar completely independent */
+.sidebar {
+    width: 250px;
+    left: 0;
+    right: auto;
+    position: fixed;
+    z-index: 1000;
+}
+
+/* Main starts AFTER the sidebar */
+.dashboard-main {
+    width: calc(100% - 250px) !important;
+    margin-left: 250px !important;
+    margin-right: 0 !important;
+
+    min-width: 0 !important;
+    max-width: none !important;
+
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+/* Dashboard content cannot move outside main */
+.dashboard {
+    width: 100% !important;
+    max-width: none !important;
+
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    padding-left: 35px;
+    padding-right: 35px;
+
+    box-sizing: border-box;
+}
+
+/* Orders section stays inside dashboard */
+.dashboard-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    box-sizing: border-box;
+}
+
+/* Table container */
+.orders-table-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    overflow-x: auto !important;
+    overflow-y: hidden;
+
+    box-sizing: border-box;
+}
+
+/* Table itself */
+.orders-table {
+    width: 100%;
+    min-width: 760px;
+
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    box-sizing: border-box;
+}
+/* ==================================================
+   RECENT ORDERS - FINAL POSITION FIX
+================================================== */
+
+.orders-table-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+    padding: 0 !important;
+
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+
+    box-sizing: border-box;
+}
+
+.orders-table {
+    width: 100% !important;
+
+    min-width: 0 !important;
+    max-width: none !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    transform: none !important;
+    position: static !important;
+
+    table-layout: fixed;
+}
+
+/* Column widths */
+.orders-table th:nth-child(1),
+.orders-table td:nth-child(1) {
+    width: 13%;
+}
+
+.orders-table th:nth-child(2),
+.orders-table td:nth-child(2) {
+    width: 22%;
+}
+
+.orders-table th:nth-child(3),
+.orders-table td:nth-child(3) {
+    width: 25%;
+}
+
+.orders-table th:nth-child(4),
+.orders-table td:nth-child(4) {
+    width: 20%;
+}
+
+.orders-table th:nth-child(5),
+.orders-table td:nth-child(5) {
+    width: 20%;
+}
+
+/* Keep table content inside its cells */
+.orders-table th,
+.orders-table td {
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* Desktop */
+@media (min-width: 901px) {
+
+    .orders-table-wrapper {
+        overflow-x: hidden !important;
+    }
+
+    .orders-table {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+}/* ==================================================
+   GREENTREE ADMIN DASHBOARD
+   Clean / Stable Version
+================================================== */
+
+/* ================= GLOBAL ================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    background: #06101d;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+a,
+button {
+    font-family: inherit;
+}
+
+/* ================= LAYOUT ================= */
+
+.dashboard-layout {
+    min-height: 100vh;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    height: 100vh;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    background: #081625;
+    border-right: 1px solid #1c3045;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+/* ================= LOGO ================= */
+
+.sidebar-logo {
+    flex: 0 0 80px;
+    height: 80px;
+    padding: 0 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    border-bottom: 1px solid #1c3045;
+}
+
+.logo-mark {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #16d48a;
+    color: #06101d;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.logo-text {
+    font-size: 18px;
+}
+
+.logo-text span {
+    color: #16d48a;
+}
+
+/* ================= NAV ================= */
+
+.sidebar-nav {
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #294157 transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background: #294157;
+    border-radius: 999px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+    background: #00d89a;
+}
+
+.sidebar-title {
+    margin: 15px 10px 8px;
+    color: #5e738a;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+}
+
+.sidebar-link {
+    width: 100%;
+    min-height: 44px;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: none;
+    border-radius: 9px;
+    background: transparent;
+    color: #91a5b9;
+    text-decoration: none;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-link:hover {
+    background: #0d2032;
+    color: #ffffff;
+}
+
+.sidebar-link.active {
+    background: rgba(22, 212, 138, 0.1);
+    color: #16d48a;
+    border-left: 3px solid #16d48a;
+}
+
+.sidebar-icon {
+    width: 24px;
+    min-width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: inherit;
+    font-weight: 700;
+}
+
+/* ================= SIDEBAR BOTTOM ================= */
+
+.sidebar-bottom {
+    flex: 0 0 auto;
+    margin-top: auto;
+    padding: 10px 15px;
+    background: #081625;
+    border-top: 1px solid #1c3045;
+    z-index: 2;
+}
+
+.sidebar-bottom .sidebar-link {
+    min-height: 38px;
+    padding: 8px 12px;
+}
+
+.website-link {
+    margin-bottom: 5px;
+}
+
+.logout-btn {
+    text-align: left;
+}
+
+/* ================= MAIN ================= */
+
+.dashboard-main {
+    width: calc(100% - 250px);
+    min-width: 0;
+    min-height: 100vh;
+    margin-left: 250px;
+    overflow-x: hidden;
+}
+
+/* ================= TOPBAR ================= */
+
+.dashboard-topbar {
+    min-height: 80px;
+    padding: 0 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #1c3045;
+    background: #06101d;
+}
+
+.topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.topbar-label {
+    display: block;
+    margin-bottom: 4px;
+    color: #16d48a;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.8px;
+}
+
+.topbar-left h1 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 22px;
+}
+
+.back-home {
+    color: #9aaabd;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+.back-home:hover {
+    color: #16d48a;
+}
+
+/* ================= MOBILE MENU ================= */
+
+.menu-btn {
+    display: none;
+    width: 42px;
+    height: 42px;
+    padding: 9px;
+    border: 1px solid #1c3045;
+    border-radius: 8px;
+    background: #0b1a2b;
+    cursor: pointer;
+}
+
+.menu-btn span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin: 5px 0;
+    background: #16d48a;
+}
+
+/* ================= DASHBOARD ================= */
+
+.dashboard {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 45px 35px 70px;
+    min-width: 0;
+}
+
+.dashboard-intro {
+    margin-bottom: 35px;
+}
+
+.dashboard-intro h2 {
+    margin: 0 0 8px;
+    color: #ffffff;
+    font-size: 28px;
+}
+
+.dashboard-intro p {
+    margin: 0;
+    color: #8fa4ba;
+    font-size: 14px;
+}
+
+/* ================= STATS ================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    min-height: 140px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    background: #0b1a2b;
+    border: 1px solid #1c3045;
+    border-radius: 14px;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    border-color: #24445f;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+.stat-label {
+    color: #16d48a;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.stat-card strong {
+    margin-top: 15px;
+    color: #ffffff;
+    font-size: 30px;
+}
+
+.stat-description {
+    margin-top: 8px;
+    color: #8fa4ba;
+    font-size: 13px;
+}
+
+/* ================= SECTIONS ================= */
+
+.dashboard-section {
+    width: 100%;
+    min-width: 0;
+    margin-top: 65px;
+    padding-bottom: 20px;
+}
+
+.section-heading {
+    margin-bottom: 25px;
+}
+
+.section-label {
+    display: block;
+    margin-bottom: 10px;
+    color: #00d084;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.section-heading h2 {
+    margin: 0 0 8px;
+    color: #ffffff;
+    font-size: 28px;
+}
+
+.section-heading p {
+    margin: 0;
+    color: #8fa6c1;
+    font-size: 14px;
+}
+
+/* ================= ACTIVITY ================= */
+
+.activity-list {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.activity-item {
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    background: #0b1a2b;
+    border: 1px solid #1b344d;
+    border-radius: 12px;
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.activity-item:hover {
+    transform: translateY(-2px);
+    border-color: #12d99b;
+    background: #0e2437;
+}
+
+.activity-icon {
+    width: 42px;
+    height: 42px;
+    flex: 0 0 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #00d084;
+    color: #06111f;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.activity-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.activity-message {
+    margin: 0 0 5px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.activity-time {
+    margin: 0;
+    color: #7f96b0;
+    font-size: 13px;
+}
+
+/* ================= RECENT ORDERS ================= */
+
+.orders-section {
+    width: 100%;
+    min-width: 0;
+}
+
+.orders-table-wrapper {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin-top: 28px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    background: #0b1c2d;
+    border: 1px solid #1d354b;
+    border-radius: 16px;
+    box-sizing: border-box;
+    scrollbar-width: thin;
+    scrollbar-color: #294157 transparent;
+}
+
+.orders-table-wrapper::-webkit-scrollbar {
+    height: 7px;
+}
+
+.orders-table-wrapper::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.orders-table-wrapper::-webkit-scrollbar-thumb {
+    background: #294157;
+    border-radius: 999px;
+}
+
+.orders-table {
+    width: 100%;
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    text-align: left;
+}
+
+/* Five columns:
+   Order 13% | Customer 22% | Product 25% | Amount 20% | Status 20%
+*/
+
+.orders-table th:nth-child(1),
+.orders-table td:nth-child(1) {
+    width: 13%;
+}
+
+.orders-table th:nth-child(2),
+.orders-table td:nth-child(2) {
+    width: 22%;
+}
+
+.orders-table th:nth-child(3),
+.orders-table td:nth-child(3) {
+    width: 25%;
+}
+
+.orders-table th:nth-child(4),
+.orders-table td:nth-child(4) {
+    width: 20%;
+}
+
+.orders-table th:nth-child(5),
+.orders-table td:nth-child(5) {
+    width: 20%;
+}
+
+.orders-table thead {
+    background: #0d2236;
+}
+
+.orders-table thead th {
+    padding: 18px 22px;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid #1d354b;
+    white-space: nowrap;
+}
+
+.orders-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.orders-table tbody tr:hover {
+    background: #10273b;
+}
+
+.orders-table tbody td {
+    padding: 20px 22px;
+    color: #9bb5d0;
+    font-size: 15px;
+    border-bottom: 1px solid #172f45;
+    vertical-align: middle;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.orders-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.orders-table .order-id {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.orders-table .customer-name {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.orders-table td:nth-child(3) {
+    color: #9bb5d0;
+}
+
+.orders-table .order-amount {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.order-status {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 92px;
+    padding: 7px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.order-status.status-completed {
+    color: #12d99b;
+    background: rgba(18, 217, 155, 0.10);
+    border: 1px solid rgba(18, 217, 155, 0.30);
+}
+
+.order-status.status-pending {
+    color: #f5c451;
+    background: rgba(245, 196, 81, 0.10);
+    border: 1px solid rgba(245, 196, 81, 0.30);
+}
+
+.order-status.status-cancelled {
+    color: #ff6b6b;
+    background: rgba(255, 107, 107, 0.10);
+    border: 1px solid rgba(255, 107, 107, 0.30);
+}
+
+.orders-table tbody td[colspan] {
+    padding: 45px 20px;
+    color: #8da8c4;
+    text-align: center;
+    font-size: 15px;
+}
+
+/* ================= OVERLAY ================= */
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    z-index: 900;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1100px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .orders-table-wrapper {
+        border-radius: 12px;
+    }
+
+    .orders-table {
+        width: 760px;
+        min-width: 760px;
+        table-layout: fixed;
+    }
+
+    .orders-table thead th {
+        padding: 15px 16px;
+        font-size: 12px;
+    }
+
+    .orders-table tbody td {
+        padding: 16px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 800px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .dashboard-main {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .sidebar-overlay.show {
+        display: block;
+    }
+
+    .dashboard-topbar {
+        padding: 0 20px;
+    }
+
+    .back-home {
+        display: none;
+    }
+
+    .dashboard {
+        padding: 35px 20px 60px;
+    }
+}
+
+@media (max-width: 600px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-intro h2,
+    .section-heading h2 {
+        font-size: 24px;
+    }
+
+    .activity-item {
+        padding: 16px;
+    }
+
+    .orders-table {
+        width: 650px;
+        min-width: 650px;
+    }
+
+    .orders-table thead th,
+    .orders-table tbody td {
+        padding: 14px 12px;
+    }
+
+    .order-status {
+        min-width: 82px;
+        padding: 6px 10px;
+        font-size: 11px;
+    }
 }
